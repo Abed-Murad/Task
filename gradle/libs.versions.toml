@@ -1,0 +1,20 @@
+[versions]
+
+kotlin = "1.7.10"
+compose = "1.2.1"
+andoridx_core = "1.9.0"
+appcompat = "1.5.1"
+material = "1.7.0"
+constraintlayout = "2.1.4"
+
+[libraries]
+
+androidXCore = { module = "androidx.core:core-ktx", version.ref = "andoridx_core" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+
+[bundles]
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
