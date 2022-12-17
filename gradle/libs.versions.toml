@@ -9,10 +9,14 @@ constraintlayout = "2.1.4"
 hilt = "2.44"
 hiltCompuler = "2.44"
 retrofit = "2.9.0"
+navigation = "2.5.3"
+
+
 
 [libraries]
-
 androidXCore = { module = "androidx.core:core-ktx", version.ref = "andoridx_core" }
+androidXFragmentNavigation = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+androidXFragmentUINavigation = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }

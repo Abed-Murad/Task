@@ -37,6 +37,8 @@ android {
 dependencies {
     implementation libs.androidXCore
     implementation libs.appcompat
+    implementation libs.androidXFragmentUINavigation
+    implementation libs.androidXFragmentNavigation
     implementation libs.material
     implementation libs.constraintlayout
     implementation libs.hilt
