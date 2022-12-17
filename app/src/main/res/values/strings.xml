@@ -11,5 +11,8 @@
 
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="size">Size</string>
+    <string name="type">Type</string>
+    <string name="uploaded_by">Uploaded By</string>
 
 </resources>
