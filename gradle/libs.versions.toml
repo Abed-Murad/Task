@@ -6,6 +6,9 @@ andoridx_core = "1.9.0"
 appcompat = "1.5.1"
 material = "1.7.0"
 constraintlayout = "2.1.4"
+hilt = "2.44"
+hiltCompuler = "2.44"
+retrofit = "2.9.0"
 
 [libraries]
 
@@ -13,6 +16,9 @@ androidXCore = { module = "androidx.core:core-ktx", version.ref = "andoridx_core
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hiltCompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompuler" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [bundles]
 
