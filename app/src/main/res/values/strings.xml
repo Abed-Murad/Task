@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Task</string>
+
+    <string name="description_image_item">A single image</string>
+    <string name="description_back_button">Back button</string>
+    <string name="description_app_s_logo">App\'s Logo</string>
+
+    <string name="please_enter_your_email">Please Enter your Email</string>
+    <string name="please_enter_your_password">Please enter your Password</string>
+    <string name="please_enter_your_age">Please enter your age</string>
+
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
 </resources>

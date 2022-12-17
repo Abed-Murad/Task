@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="primary">@color/teal_700</color>
+    <color name="on_primary">@color/white</color>
+
+    <color name="secondary">@color/purple_700</color>
+
+    <color name="surface">@color/white</color>
+    <color name="on_surface">@color/black</color>
+
+    <color name="error">@color/red</color>
+
+
+    <color name="red">#CB1313</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
