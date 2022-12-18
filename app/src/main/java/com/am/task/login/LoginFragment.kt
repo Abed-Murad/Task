@@ -41,7 +41,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupOnClickListeners() {
         binding.loginBtn.setOnClickListener {
             lifecycleScope.launchWhenResumed {
-                if (viewModel.isInputValid.value == true){
+                if (viewModel.isInputValid.get()){
                     login()
                 }else{
                     Snackbar.make(binding.root, getString(R.string.please_make_sure_all_the_data_is_correct), Snackbar.LENGTH_LONG).show()
@@ -61,21 +61,19 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val isValidEmail = viewModel.isEmailValid()
             val errorMessage = getString(R.string.invalid_email_address)
             binding.emailInputLayout.error =  if (!hasFocus && !isValidEmail) errorMessage else null
-            viewModel.isInputValid.value = viewModel.validateEmailAndPassword()
         }
         binding.passwordEditText.setOnFocusChangeListener { _, hasFocus ->
             val isValidPassword = viewModel.isPasswordValid()
             val errorMessage = getString(R.string.invalid_password)
             binding.passwordInputLayout.error =  if (!hasFocus && !isValidPassword) errorMessage else null
-            viewModel.isInputValid.value = viewModel.validateEmailAndPassword()
         }
     }
 
 
     private suspend fun login() {
-        viewModel.showProgressBar.value = true
+        viewModel.showProgress.set(true)
         val result = viewModel.login().toResult(viewLifecycleOwner)
-        viewModel.showProgressBar.value = false
+        viewModel.showProgress.set(false)
         if (result.status == Status.SUCCESS) {
             goToHomeFragment()
         } else if (result.status == Status.ERROR) {

@@ -44,7 +44,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
         binding.registerBtn.setOnClickListener {
             lifecycleScope.launchWhenResumed {
-                if (viewModel.isInputValid.value == true){
+                if (viewModel.isInputValid.get()){
                     register()
                 }else{
                     Snackbar.make(binding.root, getString(R.string.please_make_sure_all_the_data_is_correct), Snackbar.LENGTH_LONG).show()
@@ -62,26 +62,23 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             val isValidEmail = viewModel.isEmailValid()
             val errorMessage = getString(R.string.invalid_email_address)
             binding.emailInputLayout.error =  if (!hasFocus && !isValidEmail) errorMessage else null
-            viewModel.isInputValid.value = viewModel.validateForm()
         }
         binding.passwordEditText.setOnFocusChangeListener { _, hasFocus ->
             val isValidPassword = viewModel.isPasswordValid()
             val errorMessage = getString(R.string.invalid_password)
             binding.passwordInputLayout.error =  if (!hasFocus && !isValidPassword) errorMessage else null
-            viewModel.isInputValid.value = viewModel.validateForm()
         }
         binding.ageEditText.setOnFocusChangeListener { _, hasFocus ->
             val isValidAge = viewModel.isValidAge()
             val errorMessage = getString(R.string.invalid_age)
             binding.ageInputLayout.error =  if (!hasFocus && !isValidAge) errorMessage else null
-            viewModel.isInputValid.value = viewModel.validateForm()
         }
     }
 
     private suspend fun register() {
-        viewModel.showProgressBar.value = true
+        viewModel.showProgress.set(true)
         val result = viewModel.register().toResult(viewLifecycleOwner)
-        viewModel.showProgressBar.value = false
+        viewModel.showProgress.set(false)
         if (result.status == Status.SUCCESS) {
             goToHomeFragment()
         } else if (result.status == Status.ERROR) {

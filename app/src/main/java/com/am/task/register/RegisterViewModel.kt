@@ -1,8 +1,8 @@
 package com.am.task.register
 
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.am.task.remote.model.RegisterBody
 import com.am.task.remote.network.Resource
@@ -16,37 +16,27 @@ class RegisterViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val validator: Validator
 ) : ViewModel() {
-    val showProgressBar = MutableLiveData<Boolean>()
-    val email = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val age = MutableLiveData<String>()
-    val isInputValid = MediatorLiveData<Boolean>()
-    private val isValidEmailAddress = MutableLiveData(false)
-    private val isValidPassword = MutableLiveData(false)
-    private val isValidAge = MutableLiveData(false)
+    val showProgress = ObservableBoolean(false)
+    val email = ObservableField<String>()
+    val password = ObservableField<String>()
+    val age = ObservableField<String>()
 
+    val isInputValid: ObservableBoolean = object : ObservableBoolean(email, password, age) {
+        override fun get() =
+            isEmailValid() && isPasswordValid() && isValidAge()
+    }
 
-    init {
-        isInputValid.addSource(email){
-            isInputValid.value = validateForm()
-            isValidEmailAddress.value = isEmailValid()
-        }
-        isInputValid.addSource(password){
-            isInputValid.value = validateForm()
-            isValidPassword.value = isPasswordValid()
-        }
-        isInputValid.addSource(age){
-            isInputValid.value = validateForm()
-            isValidAge.value = isValidAge()
+    val registerBtnEnabled = object: ObservableBoolean(isInputValid, showProgress){
+        override fun get(): Boolean {
+            return isInputValid.get() && showProgress.get().not()
         }
     }
 
 
-
     fun register(): LiveData<Resource<Boolean>> {
-        val email = email.value.orEmpty().trim()
-        val password = password.value.orEmpty()
-        val age = age.value.orEmpty()
+        val email = email.get().orEmpty().trim()
+        val password = password.get().orEmpty()
+        val age = age.get().orEmpty()
             val body = RegisterBody(email = email, password = password, age.toInt())
             return userRepository.register(body)
     }
@@ -56,7 +46,7 @@ class RegisterViewModel @Inject constructor(
     }
 
 
-    fun isEmailValid() = validator.isValidEmail(email.value.orEmpty().trim())
-    fun isPasswordValid() = validator.isValidPassword(password.value.orEmpty())
-    fun isValidAge() = validator.isValidAge(age.value?.toInt() ?: 0)
+    fun isEmailValid() = validator.isValidEmail(email.get().orEmpty().trim())
+    fun isPasswordValid() = validator.isValidPassword(password.get().orEmpty())
+    fun isValidAge() = validator.isValidAge(age.get()?.toInt() ?: 0)
 }
