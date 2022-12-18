@@ -20,5 +20,6 @@
     <string name="invalid_age">Your age must be between 18 and 99 years old.</string>
     <string name="please_make_sure_all_the_data_is_correct">Please make sure all the data are correct</string>
     <string name="uploaded_by_template">Uploaded By %s</string>
+    <string name="something_went_wrong_please_try_again_later">Something went wrong, please try again later!</string>
 
 </resources>

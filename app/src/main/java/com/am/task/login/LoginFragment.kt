@@ -15,6 +15,7 @@ import com.am.task.remote.network.Status
 import com.am.task.remote.network.coroutines.toResult
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 
 
 @AndroidEntryPoint
@@ -68,6 +69,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private suspend fun login() {
         viewModel.showProgress.set(true)
+        delay(1000)
         val result = viewModel.login().toResult(viewLifecycleOwner)
         viewModel.showProgress.set(false)
         if (result.status == Status.SUCCESS) {

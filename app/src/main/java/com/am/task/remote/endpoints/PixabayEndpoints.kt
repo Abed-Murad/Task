@@ -8,12 +8,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PixabayEndpoints {
-    @GET("https://pixabay.com/api/")
+    @GET("api/")
     fun getPhotosList(
         @Query("key") key: String = ApiConstants.PIXABAY_KEY,
-        @Query("q") query: String ="cats",
+        @Query("q") query: String = "cats",
         @Query("image_type") imageType: String = ApiConstants.IMAGE_TYPE,
     ): LiveData<ApiResponse<PhotoListDTO>>
-
-
 }
