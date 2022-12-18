@@ -1,0 +1,36 @@
+[versions]
+
+kotlin = "1.7.10"
+compose = "1.3.1"
+andoridx_core = "1.9.0"
+appcompat = "1.5.1"
+material = "1.7.0"
+constraintlayout = "2.1.4"
+hilt = "2.44"
+hiltCompuler = "2.44"
+retrofit = "2.9.0"
+navigation = "2.5.3"
+jacksonKotlinModule = "2.9.8"
+coil = "2.2.2"
+accompanist = "0.28.0"
+
+[libraries]
+androidXCore = { module = "androidx.core:core-ktx", version.ref = "andoridx_core" }
+androidXFragmentNavigation = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+androidXFragmentUINavigation = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hiltCompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompuler" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+jacksonConverter = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
+jacksonKotlinModule = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jacksonKotlinModule" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose" }
+
+[bundles]
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
