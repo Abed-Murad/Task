@@ -7,7 +7,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val photosRepository: PhotosRepository):ViewModel() {
-
-
     fun getAllPhotos() = photosRepository.getPhotos()
 }

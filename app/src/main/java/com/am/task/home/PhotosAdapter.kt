@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.am.task.R
 import com.am.task.databinding.ItemPhotoBinding
 import com.am.task.remote.model.Photo
 
@@ -24,8 +25,9 @@ class PhotosAdapter(private val mListener: Listener) : ListAdapter<Photo, PhotoV
 
     override fun onBindViewHolder(holder: PhotoViewHOlder, position: Int) {
         val item = getItem(position)
+        val context = holder.itemView.context
         holder.binding.photoImageView.load(item.previewURL)
-        holder.binding.photoOwnerTextView.text = "Uploaded By ${item.user}"
+        holder.binding.photoOwnerTextView.text = context.getString(R.string.uploaded_by_template, item.user)
         holder.binding.root.setOnClickListener {
             mListener.onItemClicked(photo = item)
         }

@@ -39,9 +39,14 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val photo = params.photo
-        binding.backImageView.setOnClickListener { activity?.onBackPressed() }
         binding.photo = photo
         populateUI(photo)
+        setupClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        binding.backImageView.setOnClickListener { activity?.onBackPressed() }
+
     }
 
     private fun populateUI(photo: Photo) {

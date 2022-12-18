@@ -53,9 +53,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-
-
-
     private fun setupInputTextValidators() {
         binding.emailEditText.setOnFocusChangeListener { _, hasFocus ->
             val isValidEmail = viewModel.isEmailValid()
@@ -68,7 +65,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             binding.passwordInputLayout.error =  if (!hasFocus && !isValidPassword) errorMessage else null
         }
     }
-
 
     private suspend fun login() {
         viewModel.showProgress.set(true)

@@ -19,5 +19,6 @@
     <string name="invalid_password">Your password must be between 6 and 12 characters long!</string>
     <string name="invalid_age">Your age must be between 18 and 99 years old.</string>
     <string name="please_make_sure_all_the_data_is_correct">Please make sure all the data are correct</string>
+    <string name="uploaded_by_template">Uploaded By %s</string>
 
 </resources>
