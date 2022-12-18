@@ -14,5 +14,8 @@
     <string name="size">Size</string>
     <string name="type">Type</string>
     <string name="uploaded_by">Uploaded By</string>
+    <string name="don_t_have_an_account_register_now">Don\'t have an account, <u>register now!</u></string>
+    <string name="invalid_email_address">Please make sure your email address is valid!</string>
+    <string name="invalid_password">Your password must be between 6 and 12 characters long!</string>
 
 </resources>

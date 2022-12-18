@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -40,6 +40,10 @@
         android:id="@+id/photoDetailsFragment"
         android:name="com.am.task.photo_details.PhotoDetailsFragment"
         android:label="PhotoDetailsFragment"
-        tools:layout="@layout/fragment_photo_details" />
+        tools:layout="@layout/fragment_photo_details" >
+        <argument
+            android:name="photo"
+            app:argType="com.am.task.remote.model.Photo" />
+    </fragment>
 
 </navigation>

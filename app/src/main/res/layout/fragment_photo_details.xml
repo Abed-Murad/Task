@@ -1,285 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageImageView"
+    <data>
+
+        <variable
+            name="photo"
+            type="com.am.task.remote.model.Photo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:contentDescription="@string/description_image_item"
-        tools:src="@drawable/img_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:scaleType="centerInside" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/backImageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/description_back_button"
-        android:padding="8dp"
-        android:paddingStart="16dp"
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlSymmetry" />
+        <ImageView
+            android:id="@+id/photoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:contentDescription="@string/description_image_item"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:foreground="@color/transparent_foreground"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/img_logo" />
+
+        <ImageView
+            android:id="@+id/backImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/description_back_button"
+            android:padding="8dp"
+            android:paddingStart="16dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            tools:ignore="RtlSymmetry" />
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/photoDetailsCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="@dimen/card_radius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageImageView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/photoDetailsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_margin="16dp"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photoImageView">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cardOneCenterGuideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <TextView
-                android:id="@+id/sizeLabelTextView"
-                style="@style/titleMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/sizeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="4249325234"
-                android:textColor="@color/on_surface"
-                app:layout_constraintStart_toStartOf="@id/sizeLabelTextView"
-                app:layout_constraintTop_toBottomOf="@id/sizeLabelTextView" />
-
-
-            <TextView
-                android:id="@+id/typeLabelTextView"
-                style="@style/titleMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/type"
-                app:layout_constraintStart_toStartOf="@id/cardOneCenterGuideline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/typeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/on_surface"
-                tools:text="Photo"
-                app:layout_constraintStart_toStartOf="@id/typeLabelTextView"
-                app:layout_constraintTop_toBottomOf="@id/typeLabelTextView" />
-
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sizeTextView"
-                app:spanCount="5"
-                tools:itemCount="12"
-                tools:listitem="@layout/item_tag" />
+                android:padding="16dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/cardOneCenterGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".5" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/photoStatsCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="@dimen/card_radius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/photoDetailsCard">
+                <TextView
+                    android:id="@+id/sizeLabelTextView"
+                    style="@style/titleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:id="@+id/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(photo.imageSize)}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintStart_toStartOf="@id/sizeLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@id/sizeLabelTextView"
+                    tools:text="4249325234" />
+
+
+                <TextView
+                    android:id="@+id/typeLabelTextView"
+                    style="@style/titleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/type"
+                    app:layout_constraintStart_toStartOf="@id/cardOneCenterGuideline"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/typeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{photo.type}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintStart_toStartOf="@id/typeLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@id/typeLabelTextView"
+                    tools:text="Photo" />
+
+                <androidx.compose.ui.platform.ComposeView
+                    android:id="@+id/tagsView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sizeTextView"
+                    android:layout_height="wrap_content" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/photoStatsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_margin="16dp"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photoDetailsCard">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cardTwoCenterGuideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <TextView
-                android:id="@+id/photoOwnerLabelTextView"
-                style="@style/titleMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/uploaded_by"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/photoOwnerTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/on_surface"
-                tools:text="Abed Murad"
-                app:layout_constraintStart_toStartOf="@id/photoOwnerLabelTextView"
-                app:layout_constraintTop_toBottomOf="@id/photoOwnerLabelTextView" />
-
-
-            <ImageView
-                android:id="@+id/viewsImageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="4dp"
-                android:paddingStart="1dp"
-                android:src="@drawable/ic_views"
-                app:layout_constraintBottom_toTopOf="@+id/photoOwnerTextView"
-                app:layout_constraintEnd_toStartOf="@+id/viewsTextView"
-                app:layout_constraintTop_toTopOf="@+id/photoOwnerLabelTextView"
-                app:tint="@color/secondary"
-                tools:ignore="ContentDescription,RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/viewsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/on_surface"
-                tools:text="30M"
-                app:layout_constraintBottom_toBottomOf="@+id/viewsImageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/viewsImageView" />
-
-
-            <View
-                android:id="@+id/view"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/on_surface_line"
-                app:layout_constraintTop_toBottomOf="@+id/photoOwnerTextView"
-                tools:layout_editor_absoluteX="16dp" />
-
-
-            <ImageView
-                android:id="@+id/likesImageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:paddingStart="1dp"
-                android:src="@drawable/ic_like"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:tint="@color/secondary"
-                tools:ignore="ContentDescription,RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/likesTextView"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                tools:text="34k"
-                android:textColor="@color/on_surface"
-                app:layout_constraintBottom_toBottomOf="@+id/likesImageView"
-                app:layout_constraintStart_toEndOf="@+id/likesImageView"
-                app:layout_constraintTop_toTopOf="@+id/likesImageView" />
+                android:padding="16dp">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/cardTwoCenterGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".5" />
+
+                <TextView
+                    android:id="@+id/photoOwnerLabelTextView"
+                    style="@style/titleMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/uploaded_by"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/photoOwnerTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{photo.user}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintStart_toStartOf="@id/photoOwnerLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@id/photoOwnerLabelTextView"
+                    tools:text="Abed Murad" />
 
 
-            <ImageView
-                android:id="@+id/commentsImageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:paddingStart="1dp"
-                android:src="@drawable/ic_comment"
-                app:layout_constraintBottom_toBottomOf="@+id/likesImageView"
-                app:layout_constraintStart_toStartOf="@+id/cardTwoCenterGuideline"
-                app:layout_constraintTop_toTopOf="@+id/likesImageView"
-                app:tint="@color/secondary"
-                tools:ignore="ContentDescription,RtlSymmetry" />
+                <ImageView
+                    android:id="@+id/viewsImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="4dp"
+                    android:paddingStart="1dp"
+                    android:src="@drawable/ic_views"
+                    app:layout_constraintBottom_toTopOf="@+id/photoOwnerTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/viewsTextView"
+                    app:layout_constraintTop_toTopOf="@+id/photoOwnerLabelTextView"
+                    app:tint="@color/secondary"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
 
-            <TextView
-                android:id="@+id/commentsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                tools:text="30k"
-                android:textColor="@color/on_surface"
-                app:layout_constraintBottom_toBottomOf="@+id/commentsImageView"
-                app:layout_constraintStart_toEndOf="@+id/commentsImageView"
-                app:layout_constraintTop_toTopOf="@+id/commentsImageView" />
-
-
-            <ImageView
-                android:id="@+id/favoritesImageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="16dp"
-                android:paddingStart="1dp"
-                android:src="@drawable/ic_favorite"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/commentsTextView"
-                app:tint="@color/secondary"
-                tools:ignore="ContentDescription,RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/favoritesTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                tools:text="34k"
-                android:textColor="@color/on_surface"
-
-                app:layout_constraintBottom_toBottomOf="@+id/favoritesImageView"
-                app:layout_constraintStart_toEndOf="@+id/favoritesImageView"
-                app:layout_constraintTop_toTopOf="@+id/favoritesImageView" />
+                <TextView
+                    android:id="@+id/viewsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(photo.views)}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewsImageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/viewsImageView"
+                    tools:text="30M" />
 
 
-            <ImageView
-                android:id="@+id/downloadsImageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:paddingStart="1dp"
-                android:src="@drawable/ic_download"
-                app:layout_constraintBottom_toBottomOf="@+id/favoritesImageView"
-                app:layout_constraintStart_toStartOf="@+id/commentsImageView"
-                app:layout_constraintTop_toTopOf="@+id/favoritesImageView"
-                app:tint="@color/secondary"
-                tools:ignore="ContentDescription,RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/downloadsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                tools:text="30k"
-                android:textColor="@color/on_surface"
-                app:layout_constraintBottom_toBottomOf="@+id/downloadsImageView"
-                app:layout_constraintStart_toEndOf="@+id/downloadsImageView"
-                app:layout_constraintTop_toTopOf="@+id/downloadsImageView" />
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/on_surface_line"
+                    app:layout_constraintTop_toBottomOf="@+id/photoOwnerTextView"
+                    tools:layout_editor_absoluteX="16dp" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/likesImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="1dp"
+                    android:src="@drawable/ic_like"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view"
+                    app:tint="@color/secondary"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/likesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{String.valueOf(photo.likes)}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintBottom_toBottomOf="@+id/likesImageView"
+                    app:layout_constraintStart_toEndOf="@+id/likesImageView"
+                    app:layout_constraintTop_toTopOf="@+id/likesImageView"
+                    tools:text="34k" />
+
+
+                <ImageView
+                    android:id="@+id/commentsImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:paddingStart="1dp"
+                    android:src="@drawable/ic_comment"
+                    app:layout_constraintBottom_toBottomOf="@+id/likesImageView"
+                    app:layout_constraintStart_toStartOf="@+id/cardTwoCenterGuideline"
+                    app:layout_constraintTop_toTopOf="@+id/likesImageView"
+                    app:tint="@color/secondary"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/commentsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{String.valueOf(photo.comments)}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintBottom_toBottomOf="@+id/commentsImageView"
+                    app:layout_constraintStart_toEndOf="@+id/commentsImageView"
+                    app:layout_constraintTop_toTopOf="@+id/commentsImageView"
+                    tools:text="30k" />
+
+
+                <ImageView
+                    android:id="@+id/favoritesImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="1dp"
+                    android:src="@drawable/ic_favorite"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/commentsTextView"
+                    app:tint="@color/secondary"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/favoritesTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{String.valueOf(photo.collections)}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintBottom_toBottomOf="@+id/favoritesImageView"
+                    app:layout_constraintStart_toEndOf="@+id/favoritesImageView"
+                    app:layout_constraintTop_toTopOf="@+id/favoritesImageView"
+                    tools:text="34k" />
+
+
+                <ImageView
+                    android:id="@+id/downloadsImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:paddingStart="1dp"
+                    android:src="@drawable/ic_download"
+                    app:layout_constraintBottom_toBottomOf="@+id/favoritesImageView"
+                    app:layout_constraintStart_toStartOf="@+id/commentsImageView"
+                    app:layout_constraintTop_toTopOf="@+id/favoritesImageView"
+                    app:tint="@color/secondary"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/downloadsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{String.valueOf(photo.downloads)}"
+                    android:textColor="@color/on_surface"
+                    app:layout_constraintBottom_toBottomOf="@+id/downloadsImageView"
+                    app:layout_constraintStart_toEndOf="@+id/downloadsImageView"
+                    app:layout_constraintTop_toTopOf="@+id/downloadsImageView"
+                    tools:text="30k" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

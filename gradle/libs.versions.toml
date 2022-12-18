@@ -10,8 +10,9 @@ hilt = "2.44"
 hiltCompuler = "2.44"
 retrofit = "2.9.0"
 navigation = "2.5.3"
-
-
+jacksonKotlinModule = "2.9.8"
+coil = "2.2.2"
+accompanist = "0.28.0"
 
 [libraries]
 androidXCore = { module = "androidx.core:core-ktx", version.ref = "andoridx_core" }
@@ -23,6 +24,10 @@ constraintlayout = { module = "androidx.constraintlayout:constraintlayout", vers
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hiltCompiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompuler" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+jacksonConverter = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
+jacksonKotlinModule = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jacksonKotlinModule" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
 
 [bundles]
 

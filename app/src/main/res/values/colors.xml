@@ -13,6 +13,7 @@
     <color name="surface">@color/white</color>
     <color name="on_surface">@color/black</color>
     <color name="on_surface_line">@color/mercury</color>
+    <color name="on_surface_hint">@color/mercury</color>
 
     <color name="error">@color/red</color>
 
@@ -26,4 +27,5 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent_foreground">#17000000</color>
 </resources>
