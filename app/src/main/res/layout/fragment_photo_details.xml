@@ -10,9 +10,13 @@
             type="com.am.task.remote.model.Photo" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/photoImageView"
@@ -47,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:cardElevation="5dp"
             app:cardCornerRadius="@dimen/card_radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +128,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:cardCornerRadius="@dimen/card_radius"
+            app:cardElevation="5dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/photoDetailsCard">
 
@@ -166,9 +174,10 @@
                     android:layout_marginEnd="4dp"
                     android:paddingStart="1dp"
                     android:src="@drawable/ic_views"
-                    app:layout_constraintBottom_toTopOf="@+id/photoOwnerTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/view"
                     app:layout_constraintEnd_toStartOf="@+id/viewsTextView"
-                    app:layout_constraintTop_toTopOf="@+id/photoOwnerLabelTextView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.42000002"
                     app:tint="@color/secondary"
                     tools:ignore="ContentDescription,RtlSymmetry" />
 
@@ -298,4 +307,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

@@ -33,6 +33,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), PhotosAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.photosRecyclerView.adapter = adapter
+        setupObservers()
+
+    }
+
+    private fun setupObservers() {
         viewModel.getAllPhotos().observe(viewLifecycleOwner){
             adapter.submitList(it.data?.photos)
         }

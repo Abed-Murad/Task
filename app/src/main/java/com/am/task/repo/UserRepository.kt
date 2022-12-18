@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserRepository  @Inject constructor(private val accountEndpoints: AccountEndpoints) {
+class UserRepository @Inject constructor(private val accountEndpoints: AccountEndpoints) {
 
     fun login(body: LoginBody): LiveData<Resource<Boolean>> {
         return object : NetworkBoundResourceNoCache<Boolean>() {
@@ -26,7 +26,6 @@ class UserRepository  @Inject constructor(private val accountEndpoints: AccountE
             override fun createCall(): LiveData<ApiResponse<Boolean>> {
                 return accountEndpoints.register(body)
             }
-
         }.asLiveData()
     }
 

@@ -13,6 +13,7 @@ import com.am.task.R
 import com.am.task.databinding.FragmentLoginBinding
 import com.am.task.remote.network.Status
 import com.am.task.remote.network.coroutines.toResult
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -40,7 +41,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupOnClickListeners() {
         binding.loginBtn.setOnClickListener {
             lifecycleScope.launchWhenResumed {
-                login()
+                if (viewModel.isInputValid.value == true){
+                    login()
+                }else{
+                    Snackbar.make(binding.root, getString(R.string.please_make_sure_all_the_data_is_correct), Snackbar.LENGTH_LONG).show()
+                }
             }
         }
         binding.registerBtn.setOnClickListener {
@@ -56,11 +61,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val isValidEmail = viewModel.isEmailValid()
             val errorMessage = getString(R.string.invalid_email_address)
             binding.emailInputLayout.error =  if (!hasFocus && !isValidEmail) errorMessage else null
+            viewModel.isInputValid.value = viewModel.validateEmailAndPassword()
         }
         binding.passwordEditText.setOnFocusChangeListener { _, hasFocus ->
             val isValidPassword = viewModel.isPasswordValid()
             val errorMessage = getString(R.string.invalid_password)
             binding.passwordInputLayout.error =  if (!hasFocus && !isValidPassword) errorMessage else null
+            viewModel.isInputValid.value = viewModel.validateEmailAndPassword()
         }
     }
 
@@ -72,6 +79,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         if (result.status == Status.SUCCESS) {
             goToHomeFragment()
         } else if (result.status == Status.ERROR) {
+            goToHomeFragment()
         }
     }
 
