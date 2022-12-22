@@ -42,7 +42,7 @@ sealed class ApiResponse<T> {
 
         private fun parseErrors(msg: String?): String? {
             try {
-                val v = JSONObject(msg)
+                val v = JSONObject(msg.toString())
                 val arr = v.getJSONObject("errors")
 
                 var str = ""
@@ -93,7 +93,7 @@ data class ApiSuccessResponse<T>(
             while (matcher.find()) {
                 val count = matcher.groupCount()
                 if (count == 2) {
-                    links[matcher.group(2)] = matcher.group(1)
+                    links[matcher.group(2) as String] = matcher.group(1) as String
                 }
             }
             return links
