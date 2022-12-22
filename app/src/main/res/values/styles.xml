@@ -11,7 +11,7 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="titleMedium" parent="TextAppearance.Material3.TitleMedium">
+    <style name="titleMedium" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/secondary</item>
     </style>
 
