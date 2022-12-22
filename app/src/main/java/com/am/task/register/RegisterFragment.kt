@@ -53,7 +53,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
 
         binding.backImageView.setOnClickListener {
-            activity?.onBackPressed()
+            activity?.onBackPressedDispatcher?.onBackPressed()
         }
     }
 

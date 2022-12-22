@@ -45,7 +45,9 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     }
 
     private fun setupClickListeners() {
-        binding.backImageView.setOnClickListener { activity?.onBackPressed() }
+        binding.backImageView.setOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
 
     }
 
